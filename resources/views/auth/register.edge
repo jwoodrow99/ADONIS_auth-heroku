@@ -1,0 +1,41 @@
+@layout('layouts/master')
+
+@section('content')
+    {{ style('assets/styles/auth/authForms') }}
+    <div>
+        <h1>Register</h1>
+
+        <form action="{{ route('auth.register') }}" method="post">
+            {{ csrfField() }}
+
+            <p>Username</p>
+            <input type="text" name="username" id="username" placeholder="JohnDoe">
+
+            <br><br>
+
+            <p>Email</p>
+            <input type="text" name="email" id="email" placeholder="johndoe@example.com">
+            {{ elIf('<p class="flash flash-error">$self</p>', getErrorFor('email'), hasErrorFor('email')) }}
+
+            <br><br>
+
+            <p>Password</p>
+            <input type="password" name="password" id="password">
+            {{ elIf('<p class="flash flash-error">$self</p>', getErrorFor('password'), hasErrorFor('password')) }}
+
+            <br><br>
+
+            <p>Password Confirmation</p>
+            <input type="password" name="password_confirmation" id="password_confirmation">
+
+            <br><br>
+
+            <input type="submit" value="Submit!">
+
+        </form>
+
+        <br><br>
+
+        <a href="{{ route('auth.loginForm') }}">Already have an account?</a>
+    <div>
+@endsection

@@ -6,6 +6,10 @@ const Hash = use('Hash')
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
+const date = require('date-and-time');
+// now = Date.now();
+// date.format(now, 'YYYY/MM/DD HH:mm:ss');
+
 class User extends Model {
   static boot () {
     super.boot()
@@ -33,6 +37,16 @@ class User extends Model {
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  // setter to format date field
+  setVerifyAt(verifyAt){
+      return date.format(verifyAt, 'YYYY-MM-DD HH:mm:ssZ');
+  }
+
+  // setter to format date field
+  setResetAt(resetAt){
+      return date.format(resetAt, 'YYYY-MM-DD HH:mm:ssZ');
   }
 }
 

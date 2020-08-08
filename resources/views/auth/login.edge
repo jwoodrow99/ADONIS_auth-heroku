@@ -1,0 +1,32 @@
+@layout('layouts/master')
+
+@section('content')
+    {{ style('assets/styles/auth/authForms') }}
+
+    <div>
+        <h1>Login</h1>
+
+        <form action="{{ route('auth.login') }}" method="post">
+            {{ csrfField() }}
+
+            <p>Email</p>
+            <input type="text" name="email" id="email" placeholder="johndoe@example.com">
+
+            <br><br>
+
+            <p>Password</p>
+            <input type="password" name="password" id="password">
+
+            <br><br>
+
+            <input type="submit" value="Submit!">
+
+        </form>
+
+        <br><br>
+
+        <a href="{{ route('auth.registerForm') }}">Don't have an account?</a>
+        <br>
+        <a href="{{ route('auth.resetForm') }}">Forgot your password?</a>
+    <div>
+@endsection

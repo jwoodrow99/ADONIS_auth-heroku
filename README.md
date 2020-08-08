@@ -8,9 +8,10 @@ This allows for the application to have a full auth system out of the box, and c
 
 ## Local development setup
 
-Run the following commands to setup the environment:
+Open a terminal in your project folder and run the following commands to setup the environment:
 
 ```bash
+cp .env.example .env
 adonis key:generate
 adonis migration:run
 ```
@@ -41,8 +42,9 @@ Now go to Heroku and create a new app with no name (a name will be generated for
 
 Go to the Resources tab of your newly created Heroku app and select "Find more add-ons", then select "Heroku Postgres" and click the install button. The plan should default to "Hobby Dev - Free". Next you need to select the Heroku App you are installing the plugin to, begin typing the name of it and it should pop up. After selecting the Heroku App to install to, click "Provision add-on".
 
-Next we will go to the settings tab and add "Config Vars". The reason we have to do this is because Heroku will not get your .env file as it is excluded from your github repo, this is for security, so we have to manually enter our config vars. Copy all vales from your ENV file with the exception of 2 changes.
+Next we will go to the settings tab and add "Config Vars". The reason we have to do this is because Heroku will not get your .env file as it is excluded from your github repo, this is for security, so we have to manually enter our config vars. Keep in mind you will also need to configure a mail driver to use the authentication service ([Mailgun](https://www.mailgun.com/) is recommended). Copy all vales from your ENV file with the exception of 3 changes.
 
+* APP_URL = https://YOUR-APP-NAME.herokuapp.com
 * NODE_ENV = heroku
 * DB_CONNECTION = pg
 

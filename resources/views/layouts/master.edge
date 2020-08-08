@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ADONIS TODOT - {{ title }}</title>
+        {{ style('assets/styles/layouts/master') }}
+        {{ script('assets/scripts/lib/jQuery') }}
+        {{ script('assets/scripts/layout/master') }}
+    </head>
+    <body>
+
+        @if(flashMessage('message'))
+            <p class="flash flash-message">{{ flashMessage('message') }}</p>
+        @endif
+
+        @if(flashMessage('error'))
+            <p class="flash flash-error">{{ flashMessage('error') }}</p>
+        @endif
+
+        <header>
+            @include('partials/header')
+        </header>
+
+        <main>
+            @!section('content')
+        </main>
+
+        <footer>
+            @include('partials/footer')
+        </footer>
+        
+    </body>
+</html>
